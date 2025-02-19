@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="6.6145167mm"
+   height="9.6196899mm"
+   viewBox="0 0 6.6145167 9.6196899"
+   version="1.1"
+   id="svg595"
+   sodipodi:docname="location1.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview907"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="21.343377"
+     inkscape:cx="-0.60908825"
+     inkscape:cy="18.178942"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg595" />
+  <defs
+     id="defs592" />
+  <g
+     id="layer1"
+     transform="translate(44.230015,-21.85195)"
+     style="fill:#65352e;fill-opacity:1">
+    <path
+       d="m -38.074841,23.49923 c -0.5838,-1.00749 -1.620749,-1.62301 -2.773867,-1.64653 -0.04922,-10e-4 -0.09877,-10e-4 -0.148009,0 -1.153096,0.0235 -2.190045,0.63904 -2.773867,1.64653 -0.596743,1.02981 -0.613073,2.26681 -0.04368,3.309 l 2.385386,4.3661 c 0.0011,0.002 0.0022,0.004 0.0032,0.006 0.104951,0.18241 0.292963,0.29131 0.502957,0.29131 0.209974,0 0.397985,-0.10892 0.502918,-0.29131 0.0011,-0.002 0.0022,-0.004 0.0032,-0.006 l 2.38539,-4.3661 c 0.56935,-1.04219 0.553024,-2.27919 -0.04372,-3.309 z m -2.847869,2.71154 c -0.745906,0 -1.35274,-0.60683 -1.35274,-1.35273 0,-0.7459 0.606834,-1.35274 1.35274,-1.35274 0.745903,0 1.352736,0.60684 1.352736,1.35274 0,0.7459 -0.606816,1.35273 -1.352736,1.35273 z"
+       id="path338585"
+       style="fill:#65352e;fill-opacity:1;stroke-width:0.018788" />
+  </g>
+</svg>

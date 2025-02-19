@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn about Plywood Sandakelum, a trusted provider of high-quality plywood sheets and boards in Sri Lanka." />
+    <title>About Us - Plywood Sandakelum</title>
+    <style>
+      /* Import Google Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;700&family=Titillium+Web:wght@400;600&display=swap");
+
+      /* Root Variables */
+      :root {
+        --font1: "Advent Pro", sans-serif;
+        --font2: "Titillium Web", sans-serif;
+        --primary-color: #a57b4a; /* Warm wood tone */
+        --secondary-color: #ffcc00; /* Vibrant yellow */
+        --background-color: #f4f4f4; /* Light gray */
+        --text-color: #333; /* Dark gray */
+        --white: #ffffff; /* White */
+        --black: #000000; /* Black */
+        --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      }
+
+      /* Global Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font2);
+        color: var(--text-color);
+        line-height: 1.6;
+        background-color: var(--background-color);
+      }
+
+      .wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header#header1 {
+        padding: 20px 0;
+        background: var(--white);
+        box-shadow: var(--box-shadow);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .maindiv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #logo {
+        width: 150px;
+      }
+
+      #mainmenu {
+        display: flex;
+        gap: 25px;
+      }
+
+      #mainmenu a {
+        font-family: var(--font1);
+        font-size: 18px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: var(--black);
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      #mainmenu a:hover,
+      #mainmenu a.active {
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--primary-color);
+      }
+
+      /* Hero Section */
+      section.sec1 {
+        background: url('img/plywood-decoration.jpg') no-repeat center center/cover;
+        padding: 180px 0;
+        text-align: center;
+        color: var(--white);
+        position: relative;
+      }
+
+      section.sec1::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+      }
+
+      .heading1 {
+        position: relative;
+        z-index: 1;
+      }
+
+      .heading1 .top {
+        font-size: 30px;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .heading1 .mid {
+        font-size: 56px;
+        margin: 15px 0;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .para1 {
+        font-family: var(--font2);
+        font-size: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* Call to Action Section */
+      section.cta {
+        background: var(--primary-color);
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      .cta-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .cta-content span {
+        font-family: var(--font1);
+        font-size: 24px;
+        color: var(--white);
+      }
+
+      .cta-content .phone {
+        background: var(--secondary-color);
+        padding: 15px 30px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .cta-content .phone:hover {
+        transform: scale(1.05);
+      }
+
+      .cta-content .phone img {
+        width: 20px;
+      }
+
+      /* Warehouse Section */
+      section.warehouse {
+        padding: 80px 0;
+      }
+
+      .warehouse h1 {
+        font-family: var(--font1);
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        color: var(--primary-color);
+      }
+
+      .warehouse p {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 50px;
+        color: var(--text-color);
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Footer */
+      footer#sec5 {
+        background: url('img/plywood-dark-bg.jpg') no-repeat center center/cover;
+        padding: 80px 0;
+        color: var(--white);
+        position: relative;
+      }
+
+      footer#sec5::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+      }
+
+      .footer .f1,
+      .footer .f2,
+      .footer .f3 {
+        flex: 1 1 300px;
+      }
+
+      .footer .f1 {
+        text-align: center;
+      }
+
+      .footer .logo2 {
+        width: 150px;
+        margin-bottom: 20px;
+      }
+
+      .footer .rights {
+        font-size: 14px;
+        color: #ccc;
+        display: block;
+        margin-top: 10px;
+      }
+
+      .footer .f2,
+      .footer .f3 {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .footer .f2 h3,
+      .footer .f3 h3 {
+        font-size: 20px;
+        font-family: var(--font1);
+        margin-bottom: 10px;
+        color: var(--secondary-color);
+      }
+
+      .footer .f2 a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s ease;
+      }
+
+      .footer .f2 a:hover {
+        color: var(--secondary-color);
+      }
+
+      .footer .f3 .contact-info div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .footer .f3 img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .footer-up {
+        text-align: center;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .footer-up a {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: var(--white);
+        transition: transform 0.3s ease;
+      }
+
+      .footer-up a:hover {
+        transform: translateY(-5px);
+      }
+
+      .ff1 {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 15px solid var(--secondary-color);
+        margin-bottom: 5px;
+      }
+
+      .ff2 {
+        font-size: 14px;
+        font-family: var(--font1);
+        cursor: pointer;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .maindiv {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        #mainmenu {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .sec1 {
+          padding: 120px 0;
+        }
+
+        .heading1 .mid {
+          font-size: 40px;
+        }
+
+        .para1 {
+          font-size: 16px;
+        }
+
+        .cta-content {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .gallery {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .footer {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .footer .f2,
+        .footer .f3 {
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header1">
+      <div class="wrapper maindiv">
+        <img src="img/logo.png" alt="Plywood Sandakelum Logo" id="logo" style="width: 100px; height: 60px; max-width: 100%;" />
+        <nav id="mainmenu" aria-label="Main Navigation">
+          <a href="index.html">Home</a>
+          <a href="about-us.html" class="active">About Us</a>
+          <a href="all-products.html">All Products</a>
+          <a href="contact-us.html">Contact Us</a>
+        </nav>
+        <img src="img/icons/menu.svg" alt="Menu" id="menuicon" />
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="sec1" aria-labelledby="hero-heading">
+      <div class="wrapper heading1">
+        <h1 class="top" id="hero-heading">About</h1>
+        <h1 class="mid">Plywood Sandakelum</h1>
+        <p class="para1">
+          Established over two decades ago, Plywood Sandakelum has grown from a small plank wood business to a leading provider of high-quality plywood sheets and boards in Sri Lanka. We are committed to delivering exceptional service and premium products to our valued customers.
+        </p>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+      <div class="wrapper cta-content">
+        <span>Call Us:</span>
+        <div class="phone">
+          <img src="img/icons/call-icon.svg" alt="Call Icon" />
+          <span>+251940715427 | 251940715427</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Warehouse Section -->
+    <section class="warehouse wrapper">
+      <h1>Our Warehouse</h1>
+      <p>
+        Visit our warehouse to choose from a wide selection of plywood sheets and boards tailored to your needs. Located at Ethiopia, Addis Ababa.
+      </p>
+      <div class="gallery">
+        <img src="img/furni15.jpg" alt="Warehouse Image 1" />
+        <img src="img/furni13.jpg" alt="Warehouse Image 2" />
+        <img src="img/warehouse-3.jpg" alt="Warehouse Image 3" />
+        <img src="img/warehouse-4.jpg" alt="Warehouse Image 4" />
+        <img src="img/warehouse-5.jpg" alt="Warehouse Image 5" />
+        <img src="img/furni19.jpg" alt="Warehouse Image 6" />
+        <img src="img/furni6.jpg" alt="Warehouse Image 6" />
+        <img src="img/furni5.jpg" alt="Warehouse Image 6" />
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="sec5">
+      <div class="footer wrapper">
+        <div class="f1">
+          <img class="logo2" src="img/logo.png" alt="Plywood Sandakelum Logo" />
+        </div>
+        <div class="f2">
+          <h3>Quick Links</h3>
+          <a href="index.html">Home</a>
+          <a href="about-us.html">About Us</a>
+          <a href="all-products.html">All Products</a>
+          <a href="contact-us.html">Contact Us</a>
+        </div>
+        <div class="f3">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <div>
+              <img src="img/icons/call.svg" alt="Call Icon" /> 071 1234567
+            </div>
+            <div>
+              <img src="img/icons/whatsapp.svg" alt="WhatsApp Icon" /> 071 1234567
+            </div>
+            <div>
+              <img src="img/icons/location.svg" alt="Location Icon" /> No 100/1, Yakkala
+            </div>
+            <div class="footer-up">
+              <a href="#"><span class="ff1"></span></a>
+              <a href="#"><span class="ff2">PAGE TOP</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <center><span class="rights">All Rights Reserved &copy; 2024</span></center>
+    </footer>
+  </body>
+</html>

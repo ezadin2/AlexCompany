@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explore our wide range of plywood boards and sheets at Professional Woodcraft. Available in various sizes and types to meet your needs." />
+    <title>All Products | Professional Woodcraft</title>
+    <style>
+      /* Import Google Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;700&family=Titillium+Web:wght@400;600&display=swap");
+
+      /* Root Variables */
+      :root {
+        --font1: "Advent Pro", sans-serif;
+        --font2: "Titillium Web", sans-serif;
+        --primary-color: #a57b4a; /* Warm wood tone */
+        --secondary-color: #ffcc00; /* Vibrant yellow */
+        --background-color: #f4f4f4; /* Light gray */
+        --text-color: #333; /* Dark gray */
+        --white: #ffffff; /* White */
+        --black: #000000; /* Black */
+        --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        --transition: all 0.3s ease;
+      }
+
+      /* Global Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font2);
+        color: var(--text-color);
+        line-height: 1.6;
+        background-color: var(--background-color);
+      }
+
+      .wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header#header1 {
+        padding: 20px 0;
+        background: var(--white);
+        box-shadow: var(--box-shadow);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .maindiv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #logo {
+        width: 150px;
+        transition: var(--transition);
+      }
+
+      #logo:hover {
+        transform: scale(1.05);
+      }
+
+      #mainmenu {
+        display: flex;
+        gap: 25px;
+      }
+
+      #mainmenu a {
+        font-family: var(--font1);
+        font-size: 18px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: var(--black);
+        font-weight: bold;
+        transition: var(--transition);
+      }
+
+      #mainmenu a:hover,
+      #mainmenu a.active {
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--primary-color);
+      }
+
+      /* Hero Section */
+      section.sec1 {
+        background: url('img/plywood-decoration.jpg') no-repeat center center/cover;
+        padding: 180px 0;
+        text-align: center;
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+      }
+
+      section.sec1::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+      }
+
+      .heading1 {
+        position: relative;
+        z-index: 1;
+      }
+
+      .heading1 .top {
+        font-size: 30px;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        animation: fadeInDown 1s ease;
+      }
+
+      .heading1 .mid {
+        font-size: 56px;
+        margin: 15px 0;
+        font-weight: bold;
+        text-transform: uppercase;
+        animation: fadeInUp 1s ease;
+      }
+
+      .para1 {
+        font-family: var(--font2);
+        font-size: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.8;
+        animation: fadeIn 1.5s ease;
+      }
+
+      /* Products Section */
+      section#sec3 {
+        padding: 80px 0;
+        background: var(--white);
+      }
+
+      #sec3 h1 {
+        font-family: var(--font1);
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        color: var(--primary-color);
+        animation: fadeInDown 1s ease;
+      }
+
+      #sec3 p {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 50px;
+        color: var(--text-color);
+        animation: fadeInUp 1s ease;
+      }
+
+      #boards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .board {
+        background: var(--white);
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: var(--box-shadow);
+        text-align: center;
+        transition: var(--transition);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .board:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .board img {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        transition: var(--transition);
+      }
+
+      .board:hover img {
+        transform: scale(1.1);
+      }
+
+      .board .sp2 {
+        font-family: var(--font1);
+        font-size: 24px;
+        font-weight: bold;
+        margin: 15px 0;
+        display: block;
+        color: var(--primary-color);
+      }
+
+      /* Footer */
+      footer#sec5 {
+        background: url('img/plywood-dark-bg.jpg') no-repeat center center/cover;
+        padding: 80px 0;
+        color: var(--white);
+        position: relative;
+      }
+
+      footer#sec5::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+      }
+
+      .footer .f1,
+      .footer .f2,
+      .footer .f3 {
+        flex: 1 1 300px;
+      }
+
+      .footer .f1 {
+        text-align: center;
+      }
+
+      .footer .logo2 {
+        width: 150px;
+        margin-bottom: 20px;
+        transition: var(--transition);
+      }
+
+      .footer .logo2:hover {
+        transform: scale(1.05);
+      }
+
+      .footer .rights {
+        font-size: 14px;
+        color: #ccc;
+        display: block;
+        margin-top: 10px;
+      }
+
+      .footer .f2,
+      .footer .f3 {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .footer .f2 h3,
+      .footer .f3 h3 {
+        font-size: 20px;
+        font-family: var(--font1);
+        margin-bottom: 10px;
+        color: var(--secondary-color);
+      }
+
+      .footer .f2 a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 16px;
+        transition: var(--transition);
+      }
+
+      .footer .f2 a:hover {
+        color: var(--secondary-color);
+      }
+
+      .footer .f3 .contact-info div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .footer .f3 img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .footer-up {
+        text-align: center;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .footer-up a {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: var(--white);
+        transition: var(--transition);
+      }
+
+      .footer-up a:hover {
+        transform: translateY(-5px);
+      }
+
+      .ff1 {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 15px solid var(--secondary-color);
+        margin-bottom: 5px;
+      }
+
+      .ff2 {
+        font-size: 14px;
+        font-family: var(--font1);
+        cursor: pointer;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .maindiv {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        #mainmenu {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .sec1 {
+          padding: 120px 0;
+        }
+
+        .heading1 .mid {
+          font-size: 40px;
+        }
+
+        .para1 {
+          font-size: 16px;
+        }
+
+        #boards {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .footer {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .footer .f2,
+        .footer .f3 {
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header1">
+      <div class="wrapper maindiv">
+        <img src="img/logo.png" alt="Plywood Sandakelum Logo" id="logo" style="width: 100px; height: 60px; max-width: 100%;" />
+        <nav id="mainmenu" aria-label="Main Navigation">
+          <a href="index.html">Home</a>
+          <a href="about-us.html">About Us</a>
+          <a class="active" href="all-products.html">All Products</a>
+          <a href="contact-us.html">Contact Us</a>
+        </nav>
+        <img src="img/icons/menu.svg" alt="Menu" id="menuicon" />
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="sec1" aria-labelledby="hero-heading">
+      <div class="wrapper heading1">
+        <h1 class="top" id="hero-heading">All</h1>
+        <h1 class="mid">Products</h1>
+        <p class="para1">
+          We sell a range of plywood boards and sheets for your needs. Currently,
+          we have plywood sheets ranging in size from 1mm to 25mm.
+        </p>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="sec3" class="wrapper" aria-labelledby="products-heading">
+      <h1 id="products-heading">Plywood Boards and Sheets</h1>
+      <p>
+        Here you will see our plywood boards and sheets, available in sizes of
+        1mm, 2.5mm, 4.5mm, 6.9mm, 12mm, 15mm, 18mm, and 25mm.
+      </p>
+      <div id="boards">
+        <!-- Product Cards -->
+        <div class="board">
+          <span class="sp2">Shutter Board</span>
+          <img src="img/products/shutter-board.jpg" alt="Shutter Board" />
+        </div>
+        <div class="board">
+          <span class="sp2">Hard Board</span>
+          <img src="img/products/hard-board.jpg" alt="Hard Board" />
+        </div>
+        <div class="board">
+          <span class="sp2">PVC</span>
+          <img src="img/products/pvc-board.jpg" alt="PVC Board" />
+        </div>
+        <div class="board">
+          <span class="sp2">M.D.F Melamine</span>
+          <img src="img/products/mdf-melamine.jpg" alt="MDF Melamine Board" />
+        </div>
+        <div class="board">
+          <span class="sp2">Chipboard Melamine</span>
+          <img src="img/products/chipboard-melamine.jpg" alt="Chipboard Melamine" />
+        </div>
+        <div class="board">
+          <span class="sp2">Plywood Sheets</span>
+          <img src="img/products/plywood-sheet.jpg" alt="Plywood Sheets" />
+        </div>
+        <div class="board">
+          <span class="sp2">Eco Sheets</span>
+          <img src="img/products/eco-sheet.jpg" alt="Eco Sheets" />
+        </div>
+        <div class="board">
+          <span class="sp2">HDX Sheets</span>
+          <img src="img/products/hdx-sheet.jpg" alt="HDX Sheets" />
+        </div>
+        <div class="board">
+          <span class="sp2">MRX Sheets</span>
+          <img src="img/products/mrx-sheet.jpg" alt="MRX Sheets" />
+        </div>
+        <div class="board">
+          <span class="sp2">HMR Sheets</span>
+          <img src="img/products/hmr-sheet.jpg" alt="HMR Sheets" />
+        </div>
+        <div class="board">
+          <span class="sp2">Filmface</span>
+          <img src="img/products/filmface.jpg" alt="Filmface" />
+        </div>
+        <div class="board">
+          <span class="sp2">Mdf Sheets</span>
+          <img src="img/products/mdf-sheet.jpg" alt="MDF Sheets" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="sec5">
+      <div class="footer wrapper">
+        <div class="f1">
+          <img class="logo2" src="img/logo.png" alt="Professional Woodcraft Logo" />
+        </div>
+        <div class="f2">
+          <h3>Quick Links</h3>
+          <a href="index.html">Home</a>
+          <a href="about-us.html">About Us</a>
+          <a href="all-products.html">All Products</a>
+          <a href="contact-us.html">Contact Us</a>
+        </div>
+        <div class="f3">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <div>
+              <img src="img/icons/call.svg" alt="Call Icon" /> 071 1234567
+            </div>
+            <div>
+              <img src="img/icons/whatsapp.svg" alt="WhatsApp Icon" /> 071 1234567
+            </div>
+            <div>
+              <img src="img/icons/location.svg" alt="Location Icon" /> No 100/1, Yakkala
+            </div>
+            <div class="footer-up">
+              <a href="#"><span class="ff1"></span></a>
+              <a href="#"><span class="ff2">PAGE TOP</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <center><span class="rights">All Rights Reserved &copy; 2024</span></center> 
+    </footer>
+  </body>
+</html>
