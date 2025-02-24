@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Admin Panel</title>
+  <link rel="stylesheet" href="styles5.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Admin Login</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p id="errorMessage" class="error-message"></p>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Hardcoded credentials for demonstration
+      const adminEmail = 'admin@gmail.com';
+      const adminPassword = 'admin2323';
+
+      if (email === adminEmail && password === adminPassword) {
+        // Set a flag in localStorage to indicate the user is logged in
+        localStorage.setItem('isLoggedIn', 'true');
+
+        // Redirect to the admin panel
+        window.location.href = 'admin.html';
+      } else {
+        // Show error message
+        document.getElementById('errorMessage').textContent = 'Invalid email or password';
+      }
+    });
+  </script>
+</body>
+</html>

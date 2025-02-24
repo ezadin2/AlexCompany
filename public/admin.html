@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Plywood Alex</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Global Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      display: flex;
+      background-color: #f8f9fa;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    /* Login Page Styles */
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      background-color: #f8f9fa;
+    }
+
+    .login-box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #343a40;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-box button:hover {
+      background-color: #0056b3;
+    }
+
+    .error-message {
+      color: #dc3545;
+      margin-top: 10px;
+    }
+
+    /* Admin Panel Styles (Hidden by Default) */
+    .admin-panel-container {
+      display: none;
+      width: 100%;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      width: 250px;
+      background-color: #343a40;
+      color: #fff;
+      padding: 20px;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+      height: 100vh;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar .logo {
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    .admin-panel-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .sidebar nav {
+      flex: 1;
+    }
+
+    .sidebar nav a {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .sidebar nav a i {
+      margin-right: 10px;
+    }
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+      background-color: #495057;
+      transform: translateX(5px);
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.9em;
+      color: #adb5bd;
+    }
+
+    /* Logout Button */
+    .logout-button {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .logout-button i {
+      margin-right: 10px;
+    }
+
+    .logout-button:hover {
+      background-color: #dc3545;
+      transform: translateX(5px);
+    }
+
+    /* Admin Panel Main Content */
+    .admin-panel {
+      margin-left: 270px;
+      padding: 30px;
+      width: calc(100% - 270px);
+    }
+
+    .admin-panel h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #343a40;
+    }
+
+    .admin-panel h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #495057;
+    }
+
+    /* Statistics Section */
+    .statistics {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      flex: 1;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-card i {
+      font-size: 2em;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .stat-card h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #343a40;
+    }
+
+    .stat-card p {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    /* Chart Container */
+    .chart-container {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      height: 400px;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      position: relative;
+      margin-bottom: 25px;
+      max-width: 400px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 12px 40px 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+      outline: none;
+    }
+
+    .search-bar i {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      cursor: pointer;
+    }
+
+    /* Add Product Button */
+    .add-product-button {
+      margin-bottom: 25px;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    /* Product List */
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .product-card p {
+      margin: 5px 0;
+      color: #333;
+    }
+
+    .btn-edit {
+      background-color: #28a745;
+      color: #fff;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-remove {
+      background-color: #dc3545;
+      color: #fff;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-edit:hover,
+    .btn-remove:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Page -->
+  <div class="login-container" id="loginContainer">
+    <div class="login-box">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+      <div class="error-message" id="errorMessage"></div>
+    </div>
+  </div>
+
+  <!-- Admin Panel (Hidden by Default) -->
+  <div class="admin-panel-container" id="adminPanelContainer">
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <img src="img/logo.png" alt="Plywood Alex Logo" class="logo" />
+      <div class="admin-panel-title">Admin Panel</div>
+      <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="#" onclick="filterProducts('home')"><i class="fas fa-box"></i> Home Products</a>
+        <a href="#" onclick="filterProducts('aboutus')"><i class="fas fa-info-circle"></i> About Us Products</a>
+        <a href="#" onclick="filterProducts('allproduct')"><i class="fas fa-list"></i> All Products</a>
+        <!-- Logout Button -->
+        <div class="logout-button" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <p>&copy; All Rights Reserved Aymax Trading 2025</p>
+      </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <section class="admin-panel">
+      <h1>Admin Panel - Manage Products</h1>
+      <!-- Statistics Section -->
+      <div class="statistics">
+        <div class="stat-card">
+          <i class="fas fa-boxes"></i>
+          <h3>Total Products</h3>
+          <p id="totalProducts">0</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-home"></i>
+          <h3>Home Products</h3>
+          <p id="homeProducts">0</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-info-circle"></i>
+          <h3>About Us Products</h3>
+          <p id="aboutUsProducts">0</p>
+        </div>
+      </div>
+
+      <!-- Line Chart Section -->
+      <div class="chart-container">
+        <canvas id="lineChart"></canvas>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search products..." oninput="searchProducts()" />
+        <i class="fas fa-search"></i>
+      </div>
+
+      <!-- Add Product Button -->
+      <div class="add-product-button">
+        <button class="btn-primary" onclick="window.location.href='addproducts.html'">
+          <i class="fas fa-plus"></i> Add Product
+        </button>
+      </div>
+
+      <!-- Product List -->
+      <h2>Product List</h2>
+      <div class="product-list" id="productList"></div>
+    </section>
+  </div>
+
+  <script>
+    // Check if the user is logged in
+    function checkLogin() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      if (isLoggedIn === 'true') {
+        document.getElementById('loginContainer').style.display = 'none';
+        document.getElementById('adminPanelContainer').style.display = 'block';
+      } else {
+        document.getElementById('loginContainer').style.display = 'flex';
+        document.getElementById('adminPanelContainer').style.display = 'none';
+      }
+    }
+
+    // Login Function
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Simple hardcoded credentials for demonstration
+      if (username === 'admin' && password === 'admin123') {
+        localStorage.setItem('isLoggedIn', 'true');
+        checkLogin();
+      } else {
+        document.getElementById('errorMessage').textContent = 'Invalid username or password';
+      }
+    }
+
+    // Logout Function
+    function logout() {
+      localStorage.removeItem('isLoggedIn');
+      checkLogin();
+    }
+
+    // Check login status on page load
+    checkLogin();
+
+    // Rest of your existing JavaScript code for the admin panel...
+    let allProducts = []; // Store all products for filtering
+    let lineChart; // Chart instance
+
+    /**
+     * Fetches all products from the server.
+     */
+    async function fetchProducts() {
+      try {
+        const response = await fetch('http://localhost:5000/products');
+        if (!response.ok) throw new Error('Failed to fetch products');
+
+        allProducts = await response.json();
+        displayProducts(allProducts);
+        updateStatistics();
+        updateLineChart();
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        alert('Failed to fetch products');
+      }
+    }
+
+    /**
+     * Displays products in the product list.
+     * @param {Array} products - The list of products to display.
+     */
+    function displayProducts(products) {
+      const productList = document.getElementById('productList');
+      productList.innerHTML = products.map(product => `
+        <div class="product-card">
+          <img src="${product.filename}" alt="${product.name}" /> <!-- Use Cloudinary URL -->
+          <p><strong>${product.name}</strong> (${product.page})</p>
+          <p>${product.description || 'No description available'}</p>
+          <button class="btn-edit" onclick="editProduct('${product._id}')">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+          <button class="btn-remove" onclick="removeProduct('${product._id}')">
+            <i class="fas fa-trash"></i> Remove
+          </button>
+        </div>
+      `).join('');
+    }
+
+    /**
+     * Updates the statistics section.
+     */
+    function updateStatistics() {
+      const totalProducts = allProducts.length;
+      const homeProducts = allProducts.filter(product => product.page === 'home').length;
+      const aboutUsProducts = allProducts.filter(product => product.page === 'aboutus').length;
+
+      document.getElementById('totalProducts').textContent = totalProducts;
+      document.getElementById('homeProducts').textContent = homeProducts;
+      document.getElementById('aboutUsProducts').textContent = aboutUsProducts;
+    }
+
+    /**
+     * Updates the line chart.
+     */
+    function updateLineChart() {
+      const ctx = document.getElementById('lineChart').getContext('2d');
+      const labels = ['Home Products', 'About Us Products', 'Other Products'];
+      const data = [
+        allProducts.filter(product => product.page === 'home').length,
+        allProducts.filter(product => product.page === 'aboutus').length,
+        allProducts.length - allProducts.filter(product => product.page === 'home').length - allProducts.filter(product => product.page === 'aboutus').length
+      ];
+
+      if (lineChart) {
+        lineChart.destroy(); // Destroy existing chart instance
+      }
+
+      lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Product Count',
+            data: data,
+            borderColor: '#3498db',
+            backgroundColor: 'rgba(52, 152, 219, 0.2)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+
+    /**
+     * Filters products based on the selected page.
+     * @param {string} page - The page type (e.g., 'home', 'aboutus', 'allproduct').
+     */
+    function filterProducts(page) {
+      const links = document.querySelectorAll('.sidebar nav a');
+      links.forEach(link => link.classList.remove('active'));
+
+      const selectedLink = Array.from(links).find(link => link.getAttribute('onclick')?.includes(`'${page}'`));
+      if (selectedLink) {
+        selectedLink.classList.add('active');
+      }
+
+      const filteredProducts = page === 'allproduct' ? allProducts : allProducts.filter(product => product.page === page);
+      displayProducts(filteredProducts);
+    }
+
+    /**
+     * Searches products based on the input value.
+     */
+    function searchProducts() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(searchTerm));
+      displayProducts(filteredProducts);
+    }
+
+    /**
+     * Redirects to the edit page for a specific product.
+     * @param {string} productId - The ID of the product to edit.
+     */
+    async function editProduct(productId) {
+      window.location.href = `addproducts.html?id=${productId}`;
+    }
+
+    /**
+     * Removes a product from the database.
+     * @param {string} productId - The ID of the product to remove.
+     */
+    async function removeProduct(productId) {
+      try {
+        const response = await fetch(`http://localhost:5000/remove-product/${productId}`, {
+          method: 'DELETE',
+        });
+
+        if (!response.ok) throw new Error('Failed to remove product');
+
+        alert('Product removed successfully');
+        fetchProducts();
+      } catch (error) {
+        console.error('Error removing product:', error);
+        alert('Failed to remove product');
+      }
+    }
+
+    // Fetch products when the page loads
+    fetchProducts();
+  </script>
+</body>
+</html>

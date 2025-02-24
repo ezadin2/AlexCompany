@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Product - Plywood aymaxtrading</title>
+  <link rel="stylesheet" href="styles3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      background-color: #f4f7f6;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      height: 100vh;
+      position: fixed;
+    }
+
+    .sidebar img {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .admin-panel-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .sidebar nav a {
+      display: block;
+      color: #ecf0f1;
+      padding: 10px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar nav a:hover, .sidebar nav a.active {
+      background-color: #34495e;
+    }
+
+    .admin-panel {
+      margin-left: 270px;
+      padding: 20px;
+      width: calc(100% - 270px);
+    }
+
+    .admin-panel h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    #editProductForm {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    #editProductForm input, #editProductForm select, #editProductForm textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+
+    #editProductForm textarea {
+      resize: vertical;
+    }
+
+    #editProductForm button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    #editProductForm button:hover {
+      background-color: #2980b9;
+    }
+
+    .file-input-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .file-input-container input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .file-input-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s;
+    }
+
+    .file-input-label:hover {
+      background-color: #2980b9;
+    }
+
+    #imagePreviewContainer {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    #imagePreview {
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      display: none;
+    }
+
+    #uploadStatus {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    #uploadStatus.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    #uploadStatus.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="img/logo.png" alt="Plywood Alex Logo" />
+    <div class="admin-panel-title">Admin Panel</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#" onclick="filterProducts('home')">Home Products</a>
+      <a href="#" onclick="filterProducts('aboutus')">About Us Products</a>
+      <a href="#" onclick="filterProducts('allproduct')">All Products</a>
+    </nav>
+  </div>
+
+  <section class="admin-panel">
+    <h1>Edit Product</h1>
+
+    <form id="editProductForm" enctype="multipart/form-data">
+      <input type="hidden" id="productId" value="">
+      <input type="text" name="name" id="productName" placeholder="Product Name" required />
+      <select name="page" id="productPage" required>
+        <option value="home">Home</option>
+        <option value="aboutus">About Us</option>
+        <option value="allproduct">All Products</option>
+      </select>
+      <textarea name="description" id="productDescription" placeholder="Product Description" class="hidden"></textarea>
+      <div class="form-group">
+        <label for="productImage">Product Image</label>
+        <div class="file-input-container">
+          <input type="file" name="image" id="productImage" accept="image/*" />
+          <label for="productImage" class="file-input-label">
+            <i class="fas fa-upload"></i> <span id="fileLabelText">Upload Product Image</span>
+          </label>
+          <div id="imagePreviewContainer" class="hidden">
+            <img id="imagePreview" src="#" alt="Image Preview" />
+          </div>
+        </div>
+        <div id="uploadStatus" class="hidden"></div>
+      </div>
+      <button type="submit" id="submitBtn">Update Product</button>
+    </form>
+  </section>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    const page = urlParams.get('page');
+
+    /**
+     * Fetches product details if editing.
+     */
+    async function fetchProductDetails() {
+      if (productId) {
+        try {
+          const response = await fetch(`http://localhost:5000/products/${productId}`);
+          if (!response.ok) throw new Error('Failed to fetch product details');
+
+          const product = await response.json();
+          document.getElementById('productId').value = product._id;
+          document.getElementById('productName').value = product.name;
+          document.getElementById('productPage').value = product.page;
+          document.getElementById('productDescription').value = product.description || '';
+
+          // Show/hide description based on the product's page
+          toggleDescriptionField(product.page);
+
+          // Highlight the active link in the sidebar
+          if (page) {
+            const links = document.querySelectorAll('.sidebar nav a');
+            links.forEach(link => link.classList.remove('active'));
+
+            const selectedLink = Array.from(links).find(link => link.getAttribute('onclick')?.includes(`'${page}'`));
+            if (selectedLink) {
+              selectedLink.classList.add('active');
+            }
+          }
+        } catch (error) {
+          console.error('Error fetching product details:', error);
+          alert('Failed to fetch product details');
+        }
+      }
+    }
+
+    /**
+     * Handles image preview when a file is selected.
+     */
+    document.getElementById('productImage').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      const imagePreview = document.getElementById('imagePreview');
+      const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+      const fileLabelText = document.getElementById('fileLabelText');
+      const uploadStatus = document.getElementById('uploadStatus');
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          imagePreview.src = e.target.result;
+          imagePreview.style.display = 'block';
+          imagePreviewContainer.classList.remove('hidden');
+          fileLabelText.textContent = 'Change Image';
+          uploadStatus.classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+      } else {
+        imagePreview.src = '#';
+        imagePreview.style.display = 'none';
+        imagePreviewContainer.classList.add('hidden');
+        fileLabelText.textContent = 'Upload Product Image';
+      }
+    });
+
+    /**
+     * Displays a notification message for upload status.
+     */
+    function showUploadStatus(message, isSuccess) {
+      const uploadStatus = document.getElementById('uploadStatus');
+      uploadStatus.textContent = message;
+      uploadStatus.classList.remove('hidden');
+      uploadStatus.classList.remove('success', 'error');
+      uploadStatus.classList.add(isSuccess ? 'success' : 'error');
+    }
+
+    /**
+     * Handles form submission for updating a product.
+     */
+    document.getElementById('editProductForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append('name', document.getElementById('productName').value);
+      formData.append('page', document.getElementById('productPage').value);
+      formData.append('description', document.getElementById('productDescription').value);
+      formData.append('image', document.getElementById('productImage').files[0]);
+
+      try {
+        const response = await fetch(`http://localhost:5000/update-product/${productId}`, {
+          method: 'PUT',
+          body: formData,
+        });
+
+        if (!response.ok) throw new Error('Failed to update product');
+
+        showUploadStatus('Product updated successfully!', true);
+        setTimeout(() => {
+          window.location.href = `admin.html?page=${page}`;
+        }, 2000); // Redirect after 2 seconds
+      } catch (error) {
+        console.error('Error updating product:', error);
+        showUploadStatus('Failed to update product. Please try again.', false);
+      }
+    });
+
+    /**
+     * Toggles the visibility of the description field based on the selected page.
+     */
+    function toggleDescriptionField(page) {
+      const descriptionTextarea = document.getElementById('productDescription');
+      if (page === 'home') {
+        descriptionTextarea.classList.remove('hidden');
+      } else {
+        descriptionTextarea.classList.add('hidden');
+      }
+    }
+
+    // Fetch product details when the page loads
+    fetchProductDetails();
+
+    // Sidebar filtering logic
+    function filterProducts(page) {
+      window.location.href = `admin.html?page=${page}`;
+    }
+  </script>
+</body>
+</html>

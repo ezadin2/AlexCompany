@@ -1,0 +1,646 @@
+
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;700&family=Titillium+Web:wght@400;600&display=swap");
+
+/* Root Variables */
+:root {
+  --font1: "Advent Pro", sans-serif;
+  --font2: "Titillium Web", sans-serif;
+  --primary-color: #a57b4a; /* Warm wood tone */
+  --secondary-color: #ffcc00; /* Vibrant yellow */
+  --background-color: #f4f4f4; /* Light gray */
+  --text-color: #333; /* Dark gray */
+  --white: #ffffff; /* White */
+  --black: #000000; /* Black */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  --transition: all 0.3s ease;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font2);
+  color: var(--text-color);
+  line-height: 1.6;
+  background-color: var(--background-color);
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+header#header1 {
+  padding: 20px 0;
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.maindiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  width: 150px;
+  transition: var(--transition);
+}
+
+#logo:hover {
+  transform: scale(1.05);
+}
+
+#mainmenu {
+  display: flex;
+  gap: 25px;
+}
+
+#mainmenu a {
+  font-family: var(--font1);
+  font-size: 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--black);
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+#mainmenu a:hover,
+#mainmenu a.active {
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--primary-color);
+}
+
+/* Hero Section */
+section.sec1 {
+  background: url('img/plywood-decoration.jpg') no-repeat center center/cover;
+  padding: 180px 0;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+section.sec1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+}
+
+.heading1 {
+  position: relative;
+  z-index: 1;
+}
+
+.heading1 .top {
+  font-size: 30px;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease;
+}
+
+.heading1 .mid {
+  font-size: 56px;
+  margin: 15px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  animation: fadeInUp 1s ease;
+}
+
+.para1 {
+  font-family: var(--font2);
+  font-size: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+  animation: fadeIn 1.5s ease;
+}
+
+/* Products Section */
+section#sec3 {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+#sec3 h1 {
+  font-family: var(--font1);
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  animation: fadeInDown 1s ease;
+}
+
+#sec3 p {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 50px;
+  color: var(--text-color);
+  animation: fadeInUp 1s ease;
+}
+
+#boards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.board {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: var(--transition);
+  overflow: hidden;
+  position: relative;
+}
+
+.board:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure all product images have the same dimensions */
+.board img {
+    width: 100%; /* Make the image fill the container */
+    height: 250px; /* Fixed height for all images */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 10px; /* Rounded corners for the image */
+    margin-bottom: 15px; /* Space between image and text */
+    transition: var(--transition); /* Smooth transition for hover effects */
+  }
+  
+  /* Hover effect for images */
+  .board:hover img {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+
+.board .sp2 {
+  font-family: var(--font1);
+  font-size: 24px;
+  font-weight: bold;
+  margin: 15px 0;
+  display: block;
+  color: var(--primary-color);
+}
+/* Footer */
+footer#sec5 {
+    background: url('img/plywood-dark-bg.jpg') no-repeat center center/cover;
+    padding: 20px 0 10px; /* Reduced padding for a shorter height */
+    color: var(--white); /* Set default text color to white */
+    position: relative;
+    border-top: 2px solid var(--color-secondary);
+  }
+  
+  footer#sec5::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Dark overlay for contrast */
+    z-index: 1;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Reduced gap for compact layout */
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer .f1,
+  .footer .f2,
+  .footer .f3 {
+    flex: 1 1 200px; /* Adjusted flex for compact layout */
+  }
+  
+  .footer .f1 {
+    text-align: left;
+  }
+  
+  .footer .logo2 {
+    width: 100px; /* Smaller logo */
+    margin-bottom: 10px;
+  }
+  
+  .footer .footer-description {
+    font-size: 13px; /* Smaller font size */
+    color: var(--white); /* Ensure text is white */
+    opacity: 0.9;
+    margin: 10px 0;
+    line-height: 1.5; /* Tighter line height */
+  }
+  
+  .footer .social-icons {
+    display: flex;
+    gap: 10px; /* Reduced gap for compact layout */
+    margin-top: 10px;
+  }
+  
+  .footer .social-icons img {
+    width: 20px; /* Smaller icons */
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .footer .social-icons a:hover img {
+    transform: scale(1.1); /* Subtle hover effect */
+  }
+  
+  .footer .f2 h3,
+  .footer .f3 h3 {
+    font-size: 16px; /* Smaller font size */
+    font-family: var(--font1);
+    margin-bottom: 10px;
+    color: var(--white); /* Ensure headings are white */
+    text-transform: uppercase;
+    letter-spacing: 0.5px; /* Reduced letter spacing */
+  }
+  
+  .footer .f2 ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer .f2 ul li {
+    margin-bottom: 8px; /* Reduced spacing between list items */
+  }
+  
+  .footer .f2 ul li a {
+    color: var(--white); /* Ensure links are white */
+    text-decoration: none;
+    font-size: 13px; /* Smaller font size */
+    transition: color 0.3s ease;
+  }
+  
+  .footer .f2 ul li a:hover {
+    color: var(--secondary-color); /* Hover effect with secondary color */
+  }
+  
+  .footer .f3 .contact-info div {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduced gap for compact layout */
+    font-size: 13px; /* Smaller font size */
+    margin-bottom: 8px; /* Reduced spacing between contact items */
+    color: var(--white); /* Ensure text is white */
+  }
+  
+  .footer .f3 img {
+    width: 16px; /* Smaller icons */
+    height: 16px;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding: 10px 0; /* Reduced padding for compact layout */
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly darker background */
+    color: var(--white); /* Ensure text is white */
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    margin-top: 20px; /* Reduced margin for compact layout */
+    font-size: 12px; /* Smaller font size */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 15px; /* Reduced gap for mobile */
+    }
+  
+    .footer .f1,
+    .footer .f2,
+    .footer .f3 {
+      flex: 1 1 100%;
+      margin-bottom: 15px; /* Reduced spacing for mobile */
+    }
+  
+    .footer .f1 {
+      text-align: center;
+    }
+  
+    .footer .f2 ul,
+    .footer .f3 .contact-info {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .maindiv {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #mainmenu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sec1 {
+    padding: 120px 0;
+  }
+
+  .heading1 .mid {
+    font-size: 40px;
+  }
+
+  .para1 {
+    font-size: 16px;
+  }
+
+  #boards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer .f2,
+  .footer .f3 {
+    align-items: center;
+  }
+}
+/* Products Section */
+section#sec3 {
+    padding: 80px 0;
+    background: var(--white);
+  }
+  
+  #sec3 h1 {
+    font-family: var(--font1);
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    animation: fadeInDown 1s ease;
+  }
+  
+  #sec3 p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 50px;
+    color: var(--text-color);
+    animation: fadeInUp 1s ease;
+  }
+  
+  #boards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  
+  .board {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: var(--transition);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .board:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .board img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: var(--transition);
+  }
+  
+  .board:hover img {
+    transform: scale(1.05);
+  }
+  
+  .board .sp2 {
+    font-family: var(--font1);
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0;
+    display: block;
+    color: var(--primary-color);
+  }
+  
+  /* Overlay for Product Descriptions */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .board:hover .overlay {
+    opacity: 1;
+  }
+  
+  .overlay h3 {
+    font-family: var(--font1);
+    font-size: 22px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .overlay p {
+    font-size: 16px;
+    text-align: center;
+    padding: 0 20px;
+    line-height: 1.5;
+  }
+  /* General Styles for the Product Section */
+#sec3 {
+    padding: 2rem 0;
+    text-align: center;
+  }
+  
+  #sec3 h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  #sec3 p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  
+  /* Product Cards Container */
+  #boards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  /* Individual Product Card */
+  .board {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+  }
+  
+  .board:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .board img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Overlay for Product Details */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .board:hover .overlay {
+    opacity: 1;
+  }
+  
+  .overlay h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .overlay p {
+    font-size: 1rem;
+    color: #eee;
+  }
+  
+  /* Product Name Below the Card */
+  .sp2 {
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    padding: 1rem 0;
+    background-color: #f9f9f9;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    #boards {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  
+    .board img {
+      height: 150px;
+    }
+  
+    .overlay h3 {
+      font-size: 1.2rem;
+    }
+  
+    .overlay p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #boards {
+      grid-template-columns: 1fr;
+    }
+  }

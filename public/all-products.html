@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explore our wide range of plywood boards and sheets at Professional Woodcraft. Available in various sizes and types to meet your needs." />
+    <title>All Products | Professional Woodcraft</title>
+    <link rel="stylesheet" href="styles1.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header1">
+      <div class="wrapper maindiv">
+        <img src="img/logo.png" alt="Plywood Sandakelum Logo" id="logo" style="width: 100px; height: 60px; max-width: 100%;" />
+        <nav id="mainmenu" aria-label="Main Navigation">
+          <a href="index.html">Home</a>
+          <a href="about-us.html">About Us</a>
+          <a class="active" href="all-products.html">All Products</a>
+          <a href="contact-us.html">Contact Us</a>
+        </nav>
+        <img src="img/icons/menu.svg" alt="Menu" id="menuicon" />
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="sec1" aria-labelledby="hero-heading">
+      <div class="wrapper heading1">
+        <h1 class="top" id="hero-heading">All</h1>
+        <h1 class="mid">Products</h1>
+        <p class="para1">
+          We sell a range of plywood boards and sheets for your needs. Currently,
+          we have plywood sheets ranging in size from 1mm to 25mm.
+        </p>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="sec3" class="wrapper" aria-labelledby="products-heading">
+      <h1 id="products-heading">Plywood Boards and Sheets</h1>
+      <p>
+        Here you will see our plywood boards and sheets, available in sizes of
+        1mm, 2.5mm, 4.5mm, 6.9mm, 12mm, 15mm, 18mm, and 25mm.
+      </p>
+      <div id="boards">
+        <!-- Product Cards will be dynamically loaded here -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="sec5">
+      <div class="footer wrapper">
+        <div class="f1">
+          <img class="logo2" src="img/logo.png" alt="Plywood Alex Logo" />
+          <p class="footer-description">
+            High-quality plywood boards and sheets in Addis Ababa. We provide durable and sustainable solutions for all your construction needs.
+          </p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><img src="img/icons/facebook.svg" alt="Facebook Icon" /></a>
+            <a href="#" aria-label="Instagram"><img src="img/icons/instagram.svg" alt="Instagram Icon" /></a>
+            <a href="#" aria-label="Twitter"><img src="img/icons/twitter.svg" alt="Twitter Icon" /></a>
+          </div>
+        </div>
+        <div class="f2">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="all-products.html">Products</a></li>
+            <li><a href="contact-us.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="f3">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <div>
+              <img src="img/icons/call.svg" alt="Call Icon" /> 
+              <span>+251 71 123 4567</span>
+            </div>
+            <div>
+              <img src="img/icons/whatsapp.svg" alt="WhatsApp Icon" /> 
+              <span>+251 71 123 4567</span>
+            </div>
+            <div>
+              <img src="img/icons/location.svg" alt="Location Icon" /> 
+              <span>No 100/1, Yakkala, Addis Ababa, Ethiopia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="rights">&copy; 2025 Plywood Alex. All Rights Reserved.</span>
+      </div>
+    </footer>
+
+    <script>
+      // Fetch and display products
+      async function fetchProducts() {
+        try {
+          const response = await fetch('http://localhost:5000/products');
+          if (!response.ok) {
+            throw new Error('Failed to fetch products');
+          }
+          const products = await response.json();
+    
+          // Filter products where page is 'allproduct'
+          const filteredProducts = products.filter(product => product.page === 'allproduct');
+    
+          const boards = document.getElementById('boards');
+          boards.innerHTML = filteredProducts.map(product => `
+            <div class="board">
+              <img src="${product.filename}" alt="${product.name}" /> <!-- Use Cloudinary URL -->
+              <div class="overlay">
+                <h3>${product.name}</h3>
+                <p>${product.description || 'No description available'}</p>
+              </div>
+              <span class="sp2">${product.name}</span>
+            </div>
+          `).join('');
+        } catch (error) {
+          console.error('Error fetching products:', error);
+        }
+      }
+    
+      // Fetch products on page load
+      fetchProducts();
+    </script>
+  </body>
+</html>

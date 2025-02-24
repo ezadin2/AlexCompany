@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn about Plywood Sandakelum, a trusted provider of high-quality plywood sheets and boards in Sri Lanka." />
+    <title>About Us - Plywood Sandakelum</title>
+    <link rel="stylesheet" href="styles2.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header1">
+      <div class="wrapper maindiv">
+        <img src="img/logo.png" alt="Plywood Sandakelum Logo" id="logo" style="width: 100px; height: 60px; max-width: 100%;" />
+        <nav id="mainmenu" aria-label="Main Navigation">
+          <a href="index.html">Home</a>
+          <a href="about-us.html" class="active">About Us</a>
+          <a href="all-products.html">All Products</a>
+          <a href="contact-us.html">Contact Us</a>
+        </nav>
+        <button id="menuicon" aria-label="Toggle Menu">
+          <img src="img/icons/menu.svg" alt="Menu" />
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="hero-overlay"></div>
+      <div class="wrapper hero-content">
+        <div class="hero-text">
+          <h1 class="hero-heading" id="hero-heading">About Aymax Trading</h1>
+          <p class="hero-description">
+            Aymax Trading is a trusted leader in the furniture raw materials industry, renowned for delivering premium-quality products and sustainable solutions. With years of expertise, we specialize in sourcing and supplying high-grade materials, including wood, metal, and upholstery, tailored to meet the needs of manufacturers and designers.
+            <span class="hidden-text">Our commitment to excellence ensures that every product meets the highest standards of durability and craftsmanship. At Aymax Trading, we prioritize eco-friendly practices and customer satisfaction, offering reliable and efficient service to support the growth and success of our partners. Trust us to provide the materials that bring your furniture visions to life.</span>
+          </p>
+          <a href="#cta" class="hero-cta-button">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+      <div class="wrapper cta-content">
+        <span>Call Us:</span>
+        <div class="phone">
+          <img src="img/icons/call-icon.svg" alt="Call Icon" />
+          <span>+251940715427 | 251940715427</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories wrapper" aria-labelledby="categories-heading">
+      <h1 id="categories-heading">Our Product Categories</h1>
+      <div id="categories-container">
+        <!-- Categories will be dynamically inserted here -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="sec5">
+      <div class="footer wrapper">
+        <div class="f1">
+          <img class="logo2" src="img/logo.png" alt="Plywood Alex Logo" />
+          <p class="footer-description">
+            High-quality plywood boards and sheets in Addis Ababa. We provide durable and sustainable solutions for all your construction needs.
+          </p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><img src="img/icons/facebook.svg" alt="Facebook Icon" /></a>
+            <a href="#" aria-label="Instagram"><img src="img/icons/instagram.svg" alt="Instagram Icon" /></a>
+            <a href="#" aria-label="Twitter"><img src="img/icons/twitter.svg" alt="Twitter Icon" /></a>
+          </div>
+        </div>
+        <div class="f2">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="all-products.html">Products</a></li>
+            <li><a href="contact-us.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="f3">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <div>
+              <img src="img/icons/call.svg" alt="Call Icon" /> 
+              <span>+251 71 123 4567</span>
+            </div>
+            <div>
+              <img src="img/icons/whatsapp.svg" alt="WhatsApp Icon" /> 
+              <span>+251 71 123 4567</span>
+            </div>
+            <div>
+              <img src="img/icons/location.svg" alt="Location Icon" /> 
+              <span>No 100/1, Yakkala, Addis Ababa, Ethiopia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="rights">&copy; 2025 Plywood Alex. All Rights Reserved.</span>
+      </div>
+    </footer>
+
+    <script>
+      async function fetchCategoriesAndProducts() {
+        try {
+          const response = await fetch('http://localhost:5000/products');
+          if (!response.ok) {
+            throw new Error('Failed to fetch products');
+          }
+          const products = await response.json();
+
+          // Group products by category
+          const categories = products.reduce((acc, product) => {
+            if (!acc[product.category]) {
+              acc[product.category] = [];
+            }
+            acc[product.category].push(product);
+            return acc;
+          }, {});
+
+          const categoriesContainer = document.getElementById('categories-container');
+          categoriesContainer.innerHTML = '';
+
+          for (const [category, items] of Object.entries(categories)) {
+            const categoryDiv = document.createElement('div');
+            categoryDiv.className = 'category';
+            categoryDiv.innerHTML = `
+              <h2>${category}</h2>
+              <div class="gallery">
+                ${items.map(item => `
+                  <div class="product">
+                    <img src="${item.filename}" alt="${item.name}" /> <!-- Use Cloudinary URL -->
+                    <p>${item.description}</p>
+                  </div>
+                `).join('')}
+              </div>
+            `;
+            categoriesContainer.appendChild(categoryDiv);
+          }
+        } catch (error) {
+          console.error('Error fetching categories and products:', error);
+        }
+      }
+
+      // Fetch categories and products on page load
+      fetchCategoriesAndProducts();
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const learnMoreButton = document.querySelector(".hero-cta-button");
+        const hiddenText = document.querySelector(".hidden-text");
+
+        learnMoreButton.addEventListener("click", function (event) {
+          event.preventDefault();
+          hiddenText.classList.toggle("visible");
+          learnMoreButton.textContent = hiddenText.classList.contains("visible") ? "Show Less" : "Learn More";
+        });
+      });
+    </script>
+  </body>
+</html>
